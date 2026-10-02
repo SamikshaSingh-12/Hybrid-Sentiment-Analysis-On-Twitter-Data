@@ -91,19 +91,6 @@ python -m textblob.download_corpora
 Point `dataset_path` at the CSV and run top to bottom. No TensorFlow seed is set, so
 results shift slightly between runs.
 
-## Limitations
-
-- **TextBlob is the ceiling.** It generates the labels, so the scores measure how well
-  the model imitates a lexicon, not how well it reads sentiment. Where TextBlob is
-  wrong, the model learns to be wrong the same way. Sarcasm is not handled.
-- **Tokenizer leakage.** Fitted before the train/test split, so test vocabulary is
-  known at training time.
-- **The Kaggle `label` column is unused.** It is binary (29,720 / 2,242), not
-  three-class, so it cannot replace the TextBlob labels directly, but it is the only
-  human-annotated signal available and nothing here is validated against it.
-- **Imbalance is unhandled.** No class weights. Neutral also absorbs tweets that simply
-  contain no lexicon words.
-
 ## Team
 
 Samiksha Singh, Ishwari Dawkhar, Siddharth Apte.
